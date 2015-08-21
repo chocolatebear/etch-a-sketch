@@ -1,0 +1,39 @@
+.grid {
+	height: 45px;
+	width: 45px;
+	display: inline-block;
+	background-color: #00B200;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #000000;
+	margin-right: -4px;
+}
+
+.color-change{
+	background-color: #FFFF66;
+}
+
+.row {
+	/*display: inline-block;*/
+	text-align: center;
+	margin-bottom: -4px;
+}
+
+h1 {
+	background-color: #FFFFFF;
+	font-weight: bold;
+	font-family: arial, sans-serif;
+	text-align: center;
+}
+
+#main {
+	background-color: gray;
+}
+
+#reset {
+	text-align: center;
+	font-family: arial, sans-serif;
+	font-size: 16pt;
+	font-weight: bold;
+	margin-top: 8px;
+}

@@ -11,11 +11,10 @@ $(document).ready(function(){
 
 //the following will reset the canvas
 	$('#reset').on('click', function(){
-		//$('.grid').removeClass('color-change');
-		var gridSize = prompt("What size grid do you want? Please enter a number between 1 and 80. Note: If an invalid number is entered the default size of 16 will be used.");
+		var input = getGridSize();
 		clearCanvas();
-		if(gridSize > 0 && gridSize < 81){
-			createCanvas(gridSize);
+		if(input > 0 && input < 81){
+			createCanvas(input);
 			$('.grid').on('mouseenter', function(){
 				$(this).addClass('color-change');
 			});
@@ -24,6 +23,24 @@ $(document).ready(function(){
 			createCanvas(defaultSize);
 			$('.grid').on('mouseenter', function(){
 				$(this).addClass('color-change');
+			});
+		}
+	});
+
+// the following will reset the canvas then use a random color for each grid when drawing on the canvas
+	$('#randomColor').on('click', function(){
+		var input = getGridSize();
+		clearCanvas();
+		if(input > 0 && input < 81){
+			createCanvas(input);
+			$('.grid').on('mouseenter', function(){
+				$(this).css('background-color', getRandomColor());
+			});
+		}
+		else{
+			createCanvas(defaultSize);
+			$('.grid').on('mouseenter', function(){
+				$(this).css('background-color', getRandomColor());
 			});
 		}
 	});
@@ -45,8 +62,18 @@ function createCanvas(number){
 	}
 }
 
+function getGridSize(){
+	var gridSize = prompt("What size grid do you want? Please enter a number between 1 and 80. Note: If an invalid number is entered the default size of 16 will be used.");
+	return gridSize;
+}
+
 function clearCanvas(){
 	$('.row').remove();
-	//$(document).ready();
+}
+
+//this function gets a random color. Using only main distinct colors so it shows up better.
+function getRandomColor(){
+	var randomColor = ["#000000", "#FF0000", "#0000FF", "#00FFFF", "#FF00FF", "#FFFFFF", "#FFFF00"]
+	return randomColor[Math.floor(Math.random() * 7)];
 }
 

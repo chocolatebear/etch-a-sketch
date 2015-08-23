@@ -1,19 +1,37 @@
 $(document).ready(function(){
-	
-	createCanvas(16);
-	
+	var defaultSize = 16;
+	createCanvas(defaultSize);
+
 	$('.grid').on('mouseenter', function(){
 		$(this).addClass('color-change');
 	});
+	$('#border').on('click', function(){
+		$('.grid').toggleClass('gridBorder');
+	});
+
 //the following will reset the canvas
-	$('button').on('click', function(){
-		$('.grid').removeClass('color-change');
+	$('#reset').on('click', function(){
+		//$('.grid').removeClass('color-change');
+		var gridSize = prompt("What size grid do you want? Please enter a number between 1 and 80. Note: If an invalid number is entered the default size of 16 will be used.");
+		clearCanvas();
+		if(gridSize > 0 && gridSize < 81){
+			createCanvas(gridSize);
+			$('.grid').on('mouseenter', function(){
+				$(this).addClass('color-change');
+			});
+		}
+		else{
+			createCanvas(defaultSize);
+			$('.grid').on('mouseenter', function(){
+				$(this).addClass('color-change');
+			});
+		}
 	});
 });
 
 function createCanvas(number){
 	var row = number;
-	var gridDiv = "<div class= 'grid'></div>";
+	var gridDiv = "<div class= 'grid gridBorder'></div>";
 	for(var i = number; i > 0; i--){ //This loop will create rows
 		var newRow = "<div class= 'row' id= 'row"+i+"'></div>";
 		$('#main').append(newRow);
@@ -25,5 +43,10 @@ function createCanvas(number){
 		}
 		row--;// keeps track of which row to put grids in
 	}
+}
+
+function clearCanvas(){
+	$('.row').remove();
+	//$(document).ready();
 }
 

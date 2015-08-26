@@ -2,7 +2,7 @@
 	height: 20px;
 	width: 20px;
 	display: inline-block;
-	background-color: #00B200;
+	background-color: #008000;
 	
 }
 
@@ -10,13 +10,12 @@
 	border-style: solid;
 	border-width: 1px;
 	border-color: #000000;
-	margin-right: -4px;
+	margin-right: -3px;
 }
 
 .color-change{
 	background-color: #FFFF66;
 }
-
 
 .row {
 	text-align: center;

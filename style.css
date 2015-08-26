@@ -17,6 +17,11 @@
 	background-color: #FFFF66;
 }
 
+.fade-to-black{
+	background-color: #000000;
+	opacity: 0.1;
+}
+
 .row {
 	text-align: center;
 	margin-bottom: -4px;

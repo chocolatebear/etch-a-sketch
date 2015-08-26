@@ -44,6 +44,42 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+//the following will reset the canvas then add black with 10% opacity incrementing by 10% each pass through until solid black
+	$('#fadeToBlack').on('click', function(){
+		var input = getGridSize();
+		clearCanvas();
+		if(input > 0 && input < 81){
+			createCanvas(input);
+			$('.grid').on('mouseenter', function(){
+				if($(this).hasClass('fade-to-black')){
+					var opac = parseFloat($(this).css('opacity'));
+					if(opac < 1){
+						opac += 0.1;
+						$(this).css("opacity", opac);
+					}
+				}
+				else{
+					$(this).addClass('fade-to-black');
+				}
+			});
+		}
+		else{
+			createCanvas(defaultSize);
+			$('.grid').on('mouseenter', function(){
+				if($(this).hasClass('fade-to-black')){
+					var opac = parseFloat($(this).css('opacity'));
+					if(opac < 1){
+						opac += 0.1;
+						$(this).css("opacity", opac);
+					}
+				}
+				else{
+					$(this).addClass('fade-to-black');
+				}
+			});
+		}
+	});
 });
 
 function createCanvas(number){
